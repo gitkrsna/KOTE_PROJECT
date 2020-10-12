@@ -1,0 +1,56 @@
+{% extends "landing.html" %}
+
+{% block content %}
+  
+
+  <div class="bg bg-white">
+      
+      <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Weapon Type</th>
+              <th scope="col">Regd. Number</th>
+              <th scope="col">Name</th>
+              <th scope="col">Rank</th>
+              <th scope="col">Army Number</th>
+              <th scope="col">Butt Number</th>
+              <th scope="col">Weapon Out</th>
+              <th scope="col">Weapon In</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+
+          {% if alloted_wpn %}
+          {% for c in alloted_wpn %}
+          <tbody>
+            
+          <th scope="row">{{ forloop.counter }}</th>
+              <td>{{ c.person.wpn_type }}</td> 
+              <td>{{c.person.regd_no}}</td>  
+              <td>{{c.person.name}}</td>  
+              <td>{{c.person.rank}}</td>  
+              <td>{{c.person.army_no}}</td>  
+              <td>{{c.person.butt_no}}</a></td> 
+              <td>{{c.weapon_out}}</td> 
+              <td>{% if c.weapon_in %} {{c.weapon_in}}  {% else %}  <span><a  class="btn btn-danger" style="color:white;" href="{% url 'returnweapon' pk=c.id %}">Weapon In</a> </span> {% endif %} </td> 
+              <td>{{c.date}}</td> 
+          </tr>
+
+          </tbody>
+          {% endfor %}
+          {% else %}
+          <p class=" bg bg-white">There are no weapons.</p>
+        {% endif %}    
+      </table>
+        
+      </div>
+  </div>
+
+    
+
+
+
+    
+{% endblock %}
+

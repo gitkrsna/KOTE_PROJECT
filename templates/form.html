@@ -1,0 +1,16 @@
+{% extends "landing.html" %}
+{% block title %}  Initial Entry {% endblock %}
+{% block css %} 
+
+{% endblock %}
+{% load static %}
+{% block content %}
+
+    <div>
+        <form method="post" class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-success align-left" type="submit" value="Submit"/>
+        </form>
+    </div>
+{% endblock %}

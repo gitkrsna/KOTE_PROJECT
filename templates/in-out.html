@@ -1,0 +1,44 @@
+{% extends "landing.html" %} {% block title %} Weapon OUT {% endblock %} {%
+{%block css %} {% endblock %} {% block content %} {% load static %}
+<div>
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <div class="text-center " style="position: relative;top:90px">
+      <div >
+        <label for="person" style="color:rgb(20, 24, 243); font-size: larger; font-weight: 900;">Select Person: </label>
+        <div>
+          <select class="person" id="person" name="person" style="width: 20%">
+            {% for c in persons %}
+            <option
+              value="{{ c.id }}"
+              {%
+              ifequal
+              c.id
+              persons.name
+              %}
+              selected
+              {%
+              endifequal
+              %}
+            >
+              {{c.name}}--{{c.i_card_no}}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      
+      
+      <button class="mt-5 btn btn-info " type="submit">Weapon Out</button>
+    </div>
+  </form>
+</div>
+<script src="static/js/select2.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".person").select2();
+  });
+</script>
+
+{% endblock %}

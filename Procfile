@@ -1,0 +1,1 @@
+web: gunicorn kote_software.wsgi --log-file -

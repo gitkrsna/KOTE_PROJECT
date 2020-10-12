@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html 
+lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+   
+    <script src="{% static 'initial_data_entry/js/jquery-3.5.1.min.js' %}"></script>
+    
+    <link rel="stylesheet" href="/static/initial_data_entry/css/bootstrap.min.css">
+    <link href="/static/initial_data_entry/css/select2.css" rel="stylesheet" />
+    <script src="/static/initial_data_entry/js/select2.js"></script>
+
+    
+    <style>
+
+        body {
+            background: url("{% static 'landing.jpg' %}");
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+
+        }
+    </style>
+
+    {% block css %} {% endblock %}
+    
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/iolisting">KOTE MANAGEMENT SOFTWARE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/admin/initial_data_entry/initialdataentry/add/" target="_blank">Initial Data Entry</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/in-out">Weapon Out</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/today-in-out">Weapon In</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/admin" target="_blank">Admin</a>
+              </li>
+            
+          </ul>
+          <a class="btn btn-success" style="color:white;" href="{% url 'export_users_csv' %}">Download Today's Entries</a>
+        </div>
+      </nav>
+
+    {% block content %} {% endblock %}
+</body>
+</html>
